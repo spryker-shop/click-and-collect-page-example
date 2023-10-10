@@ -1,0 +1,47 @@
+{
+    "name": "spryker-shop/click-and-collect-page-example",
+    "type": "library",
+    "description": "ClickAndCollectPageExample module",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "spryker-shop/customer-page-extension": "^1.6.0",
+        "spryker-shop/service-point-widget": "^0.6.0",
+        "spryker-shop/shop-application-extension": "^1.2.0",
+        "spryker-shop/shop-ui": "^1.71.0",
+        "spryker/kernel": "^3.52.0",
+        "spryker/symfony": "^3.0.0",
+        "spryker/transfer": "^3.27.0"
+    },
+    "require-dev": {
+        "spryker/code-sniffer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SprykerShop\\": "src/SprykerShop/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml src/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml src/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "authors": [
+        {
+            "name": "Spryker Systems GmbH",
+            "homepage": "https://spryker.com"
+        }
+    ]
+}
