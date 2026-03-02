@@ -75,9 +75,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
      */
     protected const FIELD_SERVICE_POINT = 'servicePoint';
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     */
     public function __construct(FormView $checkoutAddressForm)
     {
         $this->addIsVisibleParameter($checkoutAddressForm);
@@ -88,27 +85,16 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         $this->addSelectedServicePointParameter($checkoutAddressForm);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'ClickAndCollectServicePointAddressFormWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@ClickAndCollectPageExample/views/click-and-collect-service-point-address-form/click-and-collect-service-point-address-form.twig';
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addPickupableServiceTypeParameter(FormView $checkoutAddressForm): void
     {
         $this->addParameter(
@@ -117,11 +103,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addPickupableShipmentTypeParameter(FormView $checkoutAddressForm): void
     {
         $this->addParameter(
@@ -130,11 +111,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addItemParameter(FormView $checkoutAddressForm): void
     {
         /** @var \Generated\Shared\Transfer\ItemTransfer $itemTransfer */
@@ -149,21 +125,11 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         }
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addServicePointFormParameter(FormView $checkoutAddressForm): void
     {
         $this->addParameter(static::PARAMETER_SERVICE_POINT_FORM, $this->getServicePointForm($checkoutAddressForm));
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addIsVisibleParameter(FormView $checkoutAddressForm): void
     {
         $this->addParameter(
@@ -172,32 +138,17 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function addSelectedServicePointParameter(FormView $checkoutAddressForm): void
     {
         $this->setSelectedServicePointForQuoteLevel($checkoutAddressForm);
         $this->setSelectedServicePointForItemLevel($checkoutAddressForm);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return \Symfony\Component\Form\FormView|null
-     */
     protected function getServicePointForm(FormView $checkoutAddressForm): ?FormView
     {
         return $checkoutAddressForm->children[static::FIELD_SERVICE_POINT] ?? null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ServicePointTransfer $servicePointTransfer
-     *
-     * @return bool
-     */
     protected function hasServicePointAddress(ServicePointTransfer $servicePointTransfer): bool
     {
         $servicePointAddressTransfer = $servicePointTransfer->getAddress();
@@ -213,11 +164,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
             && $servicePointAddressTransfer->getCountry();
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return \Generated\Shared\Transfer\ServiceTypeTransfer|null
-     */
     protected function getPickupableServiceType(FormView $checkoutAddressForm): ?ServiceTypeTransfer
     {
         $servicePointForm = $this->getServicePointForm($checkoutAddressForm);
@@ -239,11 +185,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         return null;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return \Generated\Shared\Transfer\ShipmentTypeTransfer|null
-     */
     protected function getPickupableShipmentType(FormView $checkoutAddressForm): ?ShipmentTypeTransfer
     {
         $servicePointForm = $this->getServicePointForm($checkoutAddressForm);
@@ -264,11 +205,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         return null;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return bool
-     */
     protected function assertClickCollectShipmentTypes(FormView $checkoutAddressForm): bool
     {
         $shipmentTypeForm = $checkoutAddressForm->children[static::FIELD_SHIPMENT_TYPE] ?? null;
@@ -292,11 +228,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         return (bool)array_intersect($shipmentTypeKeys, $clickAndCollectShipmentTypes);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function setSelectedServicePointForItemLevel(FormView $checkoutAddressForm): void
     {
         if (!$checkoutAddressForm->vars['value'] instanceof ItemTransfer) {
@@ -309,11 +240,6 @@ class ClickAndCollectServicePointAddressFormWidget extends AbstractWidget
         }
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormView $checkoutAddressForm
-     *
-     * @return void
-     */
     protected function setSelectedServicePointForQuoteLevel(FormView $checkoutAddressForm): void
     {
         if (!$checkoutAddressForm->vars['value'] instanceof QuoteTransfer) {

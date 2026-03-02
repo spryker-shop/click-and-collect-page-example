@@ -23,9 +23,6 @@ class ClickAndCollectServicePointAddressFormWidgetCacheKeyGeneratorStrategyPlugi
         return null;
     }
 
-    /**
-     * @return string
-     */
     public function getWidgetClassName(): string
     {
         return ClickAndCollectServicePointAddressFormWidget::class;

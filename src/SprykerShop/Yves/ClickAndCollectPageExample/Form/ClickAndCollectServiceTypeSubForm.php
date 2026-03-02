@@ -111,11 +111,6 @@ class ClickAndCollectServiceTypeSubForm extends AbstractType
         return null;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return \Symfony\Component\Form\FormInterface|null
-     */
     protected function findServicePointForm(FormInterface $form): ?FormInterface
     {
         return $form->has(static::FIELD_SERVICE_POINT) ? $form->get(static::FIELD_SERVICE_POINT) : null;

@@ -13,9 +13,6 @@ use Symfony\Component\Form\FormTypeInterface;
 
 class ClickAndCollectPageExampleFactory extends AbstractFactory
 {
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createClickAndCollectServiceTypeSubForm(): FormTypeInterface
     {
         return new ClickAndCollectServiceTypeSubForm();
