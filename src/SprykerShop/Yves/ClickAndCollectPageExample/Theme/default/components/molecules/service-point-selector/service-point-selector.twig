@@ -43,7 +43,7 @@
 
 {% block body %}
     {% block noLocation %}
-        <div class="{{ config.jsName }}__no-location {{ isServicePointSelected ? attributes['toggle-class-name'] }}">
+        <div class="{{ config.jsName }}__no-location {{ isServicePointSelected ? attributes['toggle-class-name'] }}" {{ qa('service-point-selector') }}>
             <button type="button" class="button {{ attributes['trigger-class-name'] }}">
                 {{ 'service_point_widget.select_location_action' | trans }}
             </button>
