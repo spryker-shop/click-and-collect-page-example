@@ -14,8 +14,6 @@ export default class ServicePointSelector extends Component {
     protected popup: MainPopup;
     protected deliverySelect: HTMLSelectElement;
 
-    protected readyCallback(): void {}
-
     protected init(): void {
         this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.noLocationContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__no-location`)[0];
